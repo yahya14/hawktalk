@@ -1,4 +1,4 @@
-package tml.hawktalk;
+package tml.login;
 
 import android.content.Intent;
 import android.animation.Animator;
@@ -29,6 +29,8 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import tml.hawktalk.R;
+import tml.menus.GroupActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -193,12 +195,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
-        return email.contains("@");
+
+        return (email.contains("@mylaurier.ca") && email.length() == 21);
     }
 
     private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
-        return password.length() >= 0;
+        return true;//password.length() >= 6;
     }
 
     /**
@@ -311,7 +314,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             try {
                 // Simulate network access.
-                Thread.sleep(2000);
+                Thread.sleep(1500);
             } catch (InterruptedException e) {
                 return false;
             }
@@ -336,7 +339,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             if (success) {
                 finish();
                 //new code
-                Intent activityIntent = new Intent(LoginActivity.this, MainActivity.class);
+                Intent activityIntent = new Intent(LoginActivity.this, GroupActivity.class);
                 startActivity(activityIntent);
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
