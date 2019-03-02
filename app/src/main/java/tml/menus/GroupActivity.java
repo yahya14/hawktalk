@@ -1,5 +1,6 @@
 package tml.menus;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -25,14 +26,14 @@ public class GroupActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//        FloatingActionButton fab = findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
+        FloatingActionButton fab = findViewById(R.id.fab_group_search);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -83,10 +84,9 @@ public class GroupActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_groups) {
-
-        } else if (id == R.id.nav_friends) {
-
+        if (id == R.id.nav_friends) {
+            //Intent activityIntent = new Intent(GroupActivity.this, FriendsActivity.class);
+            //startActivity(activityIntent);
         } else if (id == R.id.nav_settings) {
 
         }
@@ -104,6 +104,6 @@ public class GroupActivity extends AppCompatActivity
 
         //set data for drawer
         TextView navUsername = (TextView) navigationView.getHeaderView(0).findViewById(R.id.header_name);
-        navUsername.setText("FirstN LastN");
+        navUsername.setText("Steve Nash");
     }
 }

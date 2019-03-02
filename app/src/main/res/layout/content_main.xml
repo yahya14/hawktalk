@@ -9,4 +9,21 @@
         tools:showIn="@layout/app_bar_main"
         tools:context="tml.menus.GroupActivity">
 
+    <android.support.design.widget.CoordinatorLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="tml.menus.GroupActivity">
+
+        <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab_group_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="@dimen/fab_margin"
+                app:srcCompat="@drawable/ic_add_msg" android:visibility="visible"/>
+
+    </android.support.design.widget.CoordinatorLayout>
 </android.support.constraint.ConstraintLayout>
