@@ -28,7 +28,8 @@
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/nav_header_vertical_spacing"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" android:id="@+id/header_name"
-            android:visibility="visible" android:text="@string/header_name" android:textColor="@android:color/black"
+            android:visibility="visible" android:text="@string/nav_header_title"
+            android:textColor="@android:color/black"
             tools:layout_conversion_absoluteHeight="27dp" tools:layout_editor_absoluteY="114dp"
             tools:layout_editor_absoluteX="16dp" tools:layout_conversion_absoluteWidth="25dp"/>
 
