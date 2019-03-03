@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity
-                android:name="tml.menus.GroupActivity"
+                android:name="tml.menus.MainActivity"
                 android:label="@string/title_groups"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>

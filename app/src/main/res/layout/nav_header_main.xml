@@ -29,7 +29,7 @@
             android:paddingTop="@dimen/nav_header_vertical_spacing"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" android:id="@+id/header_name"
             android:visibility="visible" android:text="@string/nav_header_title"
-            android:textColor="@android:color/black"
+            android:textColor="@android:color/white"
             tools:layout_conversion_absoluteHeight="27dp" tools:layout_editor_absoluteY="114dp"
             tools:layout_editor_absoluteX="16dp" tools:layout_conversion_absoluteWidth="25dp"/>
 
@@ -37,8 +37,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/nav_header_subtitle"
-            android:id="@+id/sayless" android:visibility="invisible" tools:layout_conversion_absoluteHeight="19dp"
+            android:id="@+id/sayless" android:visibility="visible" tools:layout_conversion_absoluteHeight="19dp"
             tools:layout_editor_absoluteY="141dp" tools:layout_editor_absoluteX="16dp"
-            tools:layout_conversion_absoluteWidth="185dp"/>
+            tools:layout_conversion_absoluteWidth="185dp" android:textColor="@android:color/white"/>
 
 </LinearLayout>

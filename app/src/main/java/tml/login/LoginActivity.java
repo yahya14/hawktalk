@@ -30,7 +30,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import tml.hawktalk.R;
-import tml.menus.GroupActivity;
+import tml.menus.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -339,7 +339,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             if (success) {
                 finish();
                 //new code
-                Intent activityIntent = new Intent(LoginActivity.this, GroupActivity.class);
+                Intent activityIntent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(activityIntent);
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));

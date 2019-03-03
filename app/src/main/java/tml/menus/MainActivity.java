@@ -1,10 +1,8 @@
 package tml.menus;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
+
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -15,8 +13,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 import tml.hawktalk.R;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 
-public class GroupActivity extends AppCompatActivity
+public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
@@ -25,15 +25,6 @@ public class GroupActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = findViewById(R.id.fab_group_search);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -44,6 +35,7 @@ public class GroupActivity extends AppCompatActivity
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         InitializeUI();
+        displayView(R.id.nav_friends);
     }
 
     @Override
@@ -51,15 +43,19 @@ public class GroupActivity extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
+        }
+
+        if (getSupportActionBar().getTitle() != "Friends") { //if the current view is not the News fragment
+            displayView(R.id.nav_friends); //display the News fragment
         } else {
-            super.onBackPressed();
+            moveTaskToBack(true);  //If view is in News fragment, exit application
         }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu, menu);
+        //getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
 
@@ -80,30 +76,53 @@ public class GroupActivity extends AppCompatActivity
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
-        int id = item.getItemId();
+        displayView(item.getItemId());
+        return true;
+    }
 
-        if (id == R.id.nav_friends) {
-            //Intent activityIntent = new Intent(GroupActivity.this, FriendsActivity.class);
-            //startActivity(activityIntent);
-        } else if (id == R.id.nav_settings) {
+    public void displayView(int viewId) {
+        Fragment fragment = null;
+        String title = getString(R.string.app_name);
 
+        switch (viewId) {
+            case R.id.nav_groups:
+                fragment = new GroupsFragment();
+                title  = "Groups";
+                break;
+            case R.id.nav_friends:
+                fragment = new FriendsFragment();
+                title  = "Friends";
+                break;
+        }
+
+        if (fragment != null) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.content_frame, fragment);
+            ft.addToBackStack(null);
+            ft.commit();
+        }
+
+        // set the toolbar title
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(title);
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
-        return true;
+
     }
 
     public void InitializeUI() {
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         //highlight group tab as default
         navigationView.getMenu().getItem(0).setChecked(true);
 
         //set data for drawer
-        TextView navUsername = (TextView) navigationView.getHeaderView(0).findViewById(R.id.header_name);
-        navUsername.setText("Steve Nash");
+        TextView navUsername = navigationView.getHeaderView(0).findViewById(R.id.header_name);
+        String name = getString(R.string.usr_first_name)+ " " + getString(R.string.usr_last_name);
+        navUsername.setText(name);
     }
 }

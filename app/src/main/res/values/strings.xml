@@ -11,14 +11,24 @@
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."</string>
+        completions."
+    </string>
+
+    <!-- Strings related to user -->
+    <string name="usr_first_name">Steve</string>
+    <string name="usr_last_name">Nash</string>
+    <string name="usr_email">nash1313@mylaurier.ca</string>
+    <string name="usr_gender">Male</string>
+    <string name="usr_year">N/A</string>
+
+
     <string name="title_activity_main">MainActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <!-- Strings for navigation drawer -->
     <string name="nav_header_title">N/A</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_subtitle">say less</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_search">Search</string>
 
@@ -26,7 +36,10 @@
     <string name="title_groups">Groups</string>
     <string name="title_friends">Friends</string>
     <string name="title_settings">Settings</string>
+    <string name="title_activity_friends">FriendsActivity</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
