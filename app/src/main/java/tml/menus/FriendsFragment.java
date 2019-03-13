@@ -6,7 +6,12 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.*;
 
+import android.widget.ListView;
 import tml.hawktalk.R;
+import tml.listadapter.ChatList;
+import tml.listadapter.ChatListAdapter;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,9 +29,17 @@ public class FriendsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the options menu
         setHasOptionsMenu(true);
+        View view = inflater.inflate(R.layout.fragment_friends, container, false);
+
+        ArrayList<ChatList> chats = new ArrayList<>();
+        chats.add(new ChatList("Emily","Emily: Want to hangout after school? :)", "10:06 am"));
+        chats.add(new ChatList("Jordan","You: I love Dragon Ball Z!", "12:46 am"));
+
+        ChatListAdapter adapter = new ChatListAdapter(view.getContext(), R.layout.adapter_view_layout, chats);
+        ((ListView) view.findViewById(R.id.lst_friends)).setAdapter(adapter);
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_friends, container, false);
+        return  view;
     }
 
     @Override
